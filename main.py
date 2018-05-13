@@ -15,7 +15,13 @@ def allowed_file(filename):
 
 @app.route('/list')
 def list_uploads():
-    return os.listdir(app.config['UPLOAD_FOLDER'])
+    file_names = os.listdir(app.config['UPLOAD_FOLDER'])
+
+    result = ''
+    for n in file_names:
+        result += '{} <br/>'.format(n)
+
+    return result
 
 
 @app.route('/', methods=['GET', 'POST'])
